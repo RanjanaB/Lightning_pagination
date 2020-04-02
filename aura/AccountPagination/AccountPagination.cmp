@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="AccountClass">
+    <aura:attribute name="AccountList" type="List"/>
+    <aura:attribute name="Columns" type="List"/>
+    <aura:attribute name="TempList" type="List"/>
+    <aura:attribute name="defaultCount" type="Integer" Default="5"/>
+    <aura:attribute name="Next" type="Boolean"/>
+    <aura:attribute name="Previous" type="Boolean"/>
+    <aura:attribute name="countCheck" type="Integer"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    <Lightning:datatable data="{!v.TempList}" columns="{!v.Columns}" keyField="id" 
+                         hideCheckboxColumn ="true"/>
+    <center>
+     <lightning:button label="Previous"
+                    onclick="{!c.onPrevious}"
+                    disabled="{!v.Previous}"/>
+     <lightning:button label="Next"
+                    onclick="{!c.onNext}"
+                    disabled="{!v.Next}"/>
+        </center>
+</aura:component>
